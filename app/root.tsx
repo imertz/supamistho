@@ -43,6 +43,7 @@ export const loader = async ({ request }: { request: Request }) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+  console.log("session", session);
 
   return json({ env, session }, { headers: response.headers });
 };
@@ -53,7 +54,11 @@ export default function App() {
   const [supabase] = useState(() =>
     createBrowserClient<Database>(env.SUPABASE_URL, env.SUPABASE_ANON_KEY)
   );
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    console.log("session", session);
+  });
   const serverAccessToken = session?.access_token;
+  console.log("serverAccessToken", serverAccessToken);
 
   useEffect(() => {
     const {
