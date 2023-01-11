@@ -1,5 +1,6 @@
 import { useOutletContext } from "@remix-run/react";
 import { useEffect, useState } from "react";
+import type { SupabaseOutletContext } from "~/root";
 import type { Database } from "../utils/db_types";
 
 type Message = Database["public"]["Tables"]["messages"]["Row"];
