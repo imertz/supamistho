@@ -57,6 +57,9 @@ export default function App() {
   supabase.auth.getSession().then(({ data: { session } }) => {
     console.log("session", session);
   });
+  supabase.auth.getUser().then(({ data: { user } }) => {
+    console.log("user", user);
+  });
   const serverAccessToken = session?.access_token;
   console.log("serverAccessToken", serverAccessToken);
 
